@@ -23,7 +23,7 @@ document.getElementById("startreset").onclick = function() {
 
         document.getElementById("gameover").style.display = "none";
 
-        // change button to reset
+        // change button elements content from start to reset
         document.getElementById("startreset").innerHTML = "Reset Game";
 
         countDown();
@@ -71,6 +71,7 @@ function countDown() {
         document.getElementById("timeremainingvalue").innerHTML = timeRemaining;
         if (timeRemaining == 0) {
             stopCountDown();
+            playTimesUpAudio();
             document.getElementById("gameover").style.display = "block";
             document.getElementById("gameover").innerHTML = "<p>Game Over!</p><p>Your score is " + score + "</p>";
             document.getElementById("timeremaining").style.display = "none";
@@ -125,10 +126,16 @@ function playCorrectAudio(){
     correctSound.play();
 }
 
+// when called it plays wrong audio sound effect
 function playWrongAudio(){
     var wrongSound = new Audio("sounds/wrong.mp3");
     wrongSound.play();
 }
 
+//when called it plays a times up audio sound effect
+function playTimesUpAudio(){
+    var timeUpSound = new Audio("sounds/timeup.mp3");
+    timeUpSound.play();
+}
 
 
